@@ -12,3 +12,22 @@ body {
 body {
   background: linear-gradient(rgb(65, 0, 16), rgb(136, 0, 25), rgb(197, 0, 49));
 }
+
+html {
+  scroll-behavior: smooth;
+}
+.logo {
+  height: 36px;
+  width: auto;
+}
+main,
+router-outlet + * {
+  scroll-margin-top: 80px;
+} /* si usás anclas internas */
+:root {
+  --nav-height: 80px; /* igual que el height del navbar */
+}
+
+.section-anchor {
+  scroll-margin-top: var(--nav-height);
+}

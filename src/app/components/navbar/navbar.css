@@ -1,3 +1,46 @@
 .navbar a {
   color: white;
 }
+.navbar {
+  height: 80px; /* define un alto estándar */
+  display: flex;
+  align-items: center; /* centra verticalmente los elementos */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-family: 'Dancing Script', cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 3.5rem;
+}
+.nav-link {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+.navbar-brand {
+  white-space: nowrap;
+}
+
+/*MEDIA QUERIES*/
+@media (max-width: 768px) {
+  .navbar {
+    height: 100px;
+  }
+  :root {
+    --nav-height: 100px;
+  }
+}
