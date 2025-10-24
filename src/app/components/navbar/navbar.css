@@ -1,46 +1,81 @@
-.navbar a {
-  color: white;
-}
+/* NAVBAR BASE */
 .navbar {
-  height: 80px; /* define un alto estándar */
+  height: var(--nav-height);
   display: flex;
-  align-items: center; /* centra verticalmente los elementos */
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+  background: transparent; /* transparente en top */
+  transition: background-color 0.25s ease, backdrop-filter 0.25s ease, border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.navbar-brand {
-  font-family: 'Dancing Script', cursive;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 3.5rem;
+/* Modo sólido cuando se hace scroll (clase agregada desde TS) */
+.navbar.solid {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: saturate(160%) blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Colores de links */
+.navbar a {
+  color: white;
 }
 .nav-link {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  font-style: normal;
   font-size: 1.2rem;
 }
+.nav-link:hover {
+  color: var(--snow);
+  opacity: 0.9;
+}
+.nav-link.active {
+  color: var(--gold);
+  font-weight: 600;
+}
 
+/* Marca */
+.navbar-brand {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 500;
+  font-size: 3.5rem;
+  white-space: nowrap;
+  color: white;
+}
+
+/* Logo (solo acá para no duplicar) */
 .logo {
-  height: 60px;
+  height: 48px;
   width: auto;
   display: block;
 }
-.navbar-brand {
-  white-space: nowrap;
+
+/* Toggler visible sobre oscuro */
+.navbar-toggler {
+  border: none;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+/* Ícono hamburguesa en blanco/gris claro */
+.navbar {
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/*MEDIA QUERIES*/
+/* MOBILE */
 @media (max-width: 768px) {
   .navbar {
-    height: 100px;
+    height: var(--nav-height);
+  } /* ya toma 100px por :root mobile */
+  .navbar-brand {
+    font-size: 2.2rem;
   }
-  :root {
-    --nav-height: 100px;
+  .logo {
+    height: 36px;
   }
 }

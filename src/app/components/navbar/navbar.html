@@ -1,25 +1,20 @@
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid justify-content-between">
-        <!-- Marca -->
+<nav class="navbar navbar-expand-lg fixed-top" [class.solid]="scrolled" role="navigation" aria-label="Principal">
+    <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/">
-            <img src="/images/logo.png" alt="Papá Noel Argentina" alt="" class="logo">
+            <img src="/images/logo.png" alt="Papá Noel Argentina" class="logo">
             <span>Papá Noel Argentina</span>
         </a>
 
-        <!-- Botón hamburguesa -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Mostrar navegación">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Links -->
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <div id="navbarNav" class="collapse navbar-collapse justify-content-end">
             <div class="navbar-nav">
-                <a class="nav-link" routerLink="/" routerLinkActive="active"
-                    [routerLinkActiveOptions]="{ exact: true }">Home</a>
                 <a class="nav-link" [routerLink]="['/']" fragment="nosotros">Nosotros</a>
-                <a class="nav-link" routerLink="/shoppings" routerLinkActive="active">Centros comerciales</a>
-                <a class="nav-link" routerLink="/empresas" routerLinkActive="active">Empresas</a>
+                <a class="nav-link" [routerLink]="['/']" fragment="shoppings">Centros comerciales</a>
+                <a class="nav-link" [routerLink]="['/']" fragment="empresas">Empresas</a>
                 <a class="nav-link" [routerLink]="['/']" fragment="contacto">Contacto</a>
             </div>
         </div>

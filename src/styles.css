@@ -1,7 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+/* Reset suave */
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 html,
@@ -11,23 +11,75 @@ body {
 
 body {
   background: linear-gradient(rgb(65, 0, 16), rgb(136, 0, 25), rgb(197, 0, 49));
+  padding-top: var(--nav-height); /* compensa navbar fijo */
 }
 
+:root {
+  --nav-height: 80px;
+  --brand-red: #b4001e;
+  --brand-green: #0d5c3b;
+  --gold: #caa753;
+  --snow: #f7f7fb;
+  --ink: #1f2937;
+}
+
+/* Smooth scroll + compensación por navbar fijo en anchors */
 html {
   scroll-behavior: smooth;
 }
-.logo {
-  height: 36px;
-  width: auto;
-}
-main,
-router-outlet + * {
-  scroll-margin-top: 80px;
-} /* si usás anclas internas */
-:root {
-  --nav-height: 80px; /* igual que el height del navbar */
-}
-
 .section-anchor {
   scroll-margin-top: var(--nav-height);
+}
+
+.container {
+  max-width: 1100px;
+}
+
+/* Tipografías y helpers globales (dejamos lo que ya tenías) */
+.holiday {
+  font-family: 'Mountains of Christmas', cursive;
+  letter-spacing: 0.5px;
+}
+.base-text {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+}
+
+.btn-cta {
+  background: linear-gradient(180deg, var(--brand-red), #8c0017);
+  color: #fff;
+  border: 0;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 20px rgba(180, 0, 30, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.btn-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(180, 0, 30, 0.35);
+}
+
+.card-snow {
+  background: linear-gradient(180deg, #ffffffcc, #ffffff);
+  backdrop-filter: blur(4px);
+  border: 1px solid #ffffffaa;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(13, 92, 59, 0.08);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Altura del navbar en mobile */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 100px;
+  }
 }
