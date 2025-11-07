@@ -1,12 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Footer } from '../../components/footer/footer';
 
 @Component({
   selector: 'app-contacto',
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './contacto.html',
+  styleUrl: './contacto.css',
 })
 export class Contacto {
   private fb = inject(FormBuilder);
@@ -19,9 +21,11 @@ export class Contacto {
   form = this.fb.group({
     nombre: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.email]],
-    telefono: [''],
+    telefono: ['', [Validators.required, Validators.minLength(8)]],
     tipoEvento: ['Shopping'],
     mensaje: ['', [Validators.required, Validators.minLength(10)]],
+    fecha: ['', [Validators.required]],
+    horario: ['', [Validators.required]],
     origen: ['web-cg-producciones'], // útil para trazabilidad
   });
 

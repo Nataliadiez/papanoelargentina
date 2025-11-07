@@ -10,8 +10,14 @@ body {
 }
 
 body {
+  background: #fff; /* el body queda neutro */
+  padding-top: var(--nav-height);
+}
+
+/* util para aplicar el gradiente rojo solo donde quieras */
+.bg-red-gradient {
   background: linear-gradient(rgb(65, 0, 16), rgb(136, 0, 25), rgb(197, 0, 49));
-  padding-top: var(--nav-height); /* compensa navbar fijo */
+  color: var(--snow);
 }
 
 :root {
@@ -26,7 +32,22 @@ body {
 /* Smooth scroll + compensación por navbar fijo en anchors */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+  scroll-snap-type: y proximity; /* en vez de mandatory */
 }
+
+.section,
+app-hero {
+  scroll-snap-align: start;
+}
+
+app-hero {
+  display: block;
+  scroll-snap-align: start;
+  scroll-margin-top: var(--nav-height);
+  min-height: calc(100vh - var(--nav-height)); /* opcional, para consistencia */
+}
+
 .section-anchor {
   scroll-margin-top: var(--nav-height);
 }
@@ -77,9 +98,55 @@ html {
   transform: none;
 }
 
+/* === ESTRUCTURA DE SECCIONES SPA === */
+
+/* Cada bloque ocupa la pantalla completa y compensa el navbar */
+.section {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+  scroll-margin-top: var(--nav-height);
+  position: relative;
+}
+
+/* Variante de fondo blanco */
+.section--stack {
+  margin-top: -2px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Variante de fondo rojo o degradado para secciones intermedias */
+.section--red {
+  background: linear-gradient(rgb(65, 0, 16), rgb(136, 0, 25), rgb(197, 0, 49));
+  color: var(--snow);
+}
+
+/* Evita colapso de márgenes internos */
+.section > *:first-child {
+  margin-top: 0;
+}
+.section > *:last-child {
+  margin-bottom: 0;
+}
+
+/*MEDIA QUERIES*/
 /* Altura del navbar en mobile */
 @media (max-width: 768px) {
   :root {
     --nav-height: 100px;
+  }
+}
+
+@media (pointer: coarse) and (min-height: 700px) {
+  body {
+    scroll-snap-type: y proximity;
+  }
+  .section,
+  app-hero {
+    scroll-snap-align: start;
   }
 }

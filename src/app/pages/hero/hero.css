@@ -1,0 +1,145 @@
+:host {
+  display: block;
+}
+
+/* ÚNICO bloque .hero-wrap */
+.hero-wrap {
+  position: relative;
+  min-height: calc(100vh - var(--nav-height, 80px));
+  padding-top: 4rem;
+  overflow: hidden;
+  isolation: isolate;
+  --scroll: 0; /* 0..1 para parallax si lo usás */
+  background: linear-gradient(
+    rgb(65, 0, 16),
+    rgb(136, 0, 25),
+    rgb(197, 0, 49)
+  ); /* fondo rojo del hero */
+}
+
+/* Glow cálido detrás */
+.hero-wrap::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60vw;
+  height: 100%;
+  transform: translateX(10%);
+  background: radial-gradient(
+    circle at 70% 60%,
+    rgba(255, 215, 180, 0.4) 0%,
+    rgba(255, 180, 120, 0.15) 30%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  z-index: 0;
+  opacity: 0;
+  animation: glowFadeIn 1.6s ease-out forwards;
+}
+@keyframes glowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(12%) scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(10%) scale(1);
+  }
+}
+
+/* Santa */
+.hero-img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: clamp(420px, 90vh, 900px);
+  width: auto;
+  object-fit: contain;
+  z-index: 1;
+  transform: translateX(2%) scale(0.96);
+  opacity: 0;
+  animation: fadeUp 1.8s ease-out 0.2s forwards;
+}
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateX(2%) translateY(40px) scale(0.96);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(2%) translateY(0) scale(1);
+  }
+}
+
+/* Ola inferior (pegada a la sección blanca) */
+.snow-bottom {
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 115%;
+  height: 150px;
+  transform: translateX(-50%);
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 -4px 12px rgba(255, 255, 255, 0.4));
+}
+.snow-bottom svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/*MEDIA QUERIES*/
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-wrap {
+    min-height: 85vh;
+    padding-top: calc(1rem + env(safe-area-inset-top, 0));
+  }
+  .hero-wrap::before {
+    width: 100%;
+    height: 72vh;
+    left: 0;
+    right: 0;
+    transform: none;
+    background: radial-gradient(
+      circle at 70% 65%,
+      rgba(255, 215, 180, 0.35) 0%,
+      rgba(255, 180, 120, 0.15) 40%,
+      rgba(0, 0, 0, 0) 80%
+    );
+  }
+  .hero-img {
+    position: static;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 85vh;
+    object-fit: cover;
+    object-position: 80% 40%;
+    transform: none;
+    animation: fadeUpMobile 1.2s ease-out forwards;
+  }
+  @keyframes fadeUpMobile {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.snow-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}

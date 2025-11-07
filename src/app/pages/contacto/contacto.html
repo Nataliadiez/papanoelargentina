@@ -1,0 +1,123 @@
+<section id="contacto" class="section-anchor py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-4" appRevealOnScroll>Contacto</h2>
+        <div class="row g-4">
+            <div class="col-12 col-lg-7">
+                <form [formGroup]="form" (ngSubmit)="submit()" class="card-snow p-4 base-text" novalidate
+                    appRevealOnScroll>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control"
+                                [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched"
+                                formControlName="nombre" required>
+                            @if (form.get('nombre')?.invalid && form.get('nombre')?.touched) {
+                            <div class="invalid-feedback">
+                                Ingresá tu nombre (mín. 2 caracteres).
+                            </div>
+                            }
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control"
+                                [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched"
+                                formControlName="email" inputmode="email" required>
+                            @if (form.get('email')?.invalid && form.get('email')?.touched) {
+                            <div class="invalid-feedback">
+                                Ingresá un email válido.
+                            </div>
+                            }
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control"
+                                [class.is-invalid]="form.get('telefono')?.invalid && form.get('telefono')?.touched"
+                                formControlName="telefono" inputmode="tel" required>
+                            @if (form.get('telefono')?.invalid && form.get('telefono')?.touched) {
+                            <div class="invalid-feedback">
+                                Ingresá un número de teléfono válido.
+                            </div>
+                            }
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Tipo de evento</label>
+                            <select class="form-select"
+                                [class.is-invalid]="form.get('tipoEvento')?.invalid && form.get('tipoEvento')?.touched"
+                                formControlName="tipoEvento" required>
+                                <option value="">Selecciona un tipo</option>
+                                <option>Shopping</option>
+                                <option>Empresa</option>
+                                <option>Campaña</option>
+                                <option>Otro</option>
+                            </select>
+                            @if (form.get('tipoEvento')?.invalid && form.get('tipoEvento')?.touched) {
+                            <div class="invalid-feedback">
+                                Seleccioná el tipo de evento.
+                            </div>
+                            }
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Fecha del evento</label>
+                            <input type="date" class="form-control"
+                                [class.is-invalid]="form.get('fecha')?.invalid && form.get('fecha')?.touched"
+                                formControlName="fecha" required>
+                            @if (form.get('fecha')?.invalid && form.get('fecha')?.touched) {
+                            <div class="invalid-feedback">
+                                Seleccioná la fecha del evento.
+                            </div>
+                            }
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Horario estimado</label>
+                            <input type="text" class="form-control"
+                                [class.is-invalid]="form.get('horario')?.invalid && form.get('horario')?.touched"
+                                formControlName="horario" placeholder="Ej: 15:00 a 19:00" required>
+                            @if (form.get('horario')?.invalid && form.get('horario')?.touched) {
+                            <div class="invalid-feedback">
+                                Ingresá el horario estimado del evento.
+                            </div>
+                            }
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Mensaje</label>
+                            <textarea class="form-control"
+                                [class.is-invalid]="form.get('mensaje')?.invalid && form.get('mensaje')?.touched"
+                                rows="5" formControlName="mensaje" required
+                                placeholder="Contanos la dinámica del evento."></textarea>
+                            @if (form.get('mensaje')?.invalid && form.get('mensaje')?.touched) {
+                            <div class="invalid-feedback">
+                                Ingresá un mensaje con los detalles del evento.
+                            </div>
+                            }
+                        </div>
+
+                        <div class="col-12 d-flex align-items-center gap-3">
+                            <button class="btn btn-cta" type="submit" [disabled]="sending">
+                                {{ sending ? 'Enviando…' : 'Enviar consulta' }}
+                            </button>
+                            <!-- <span *ngIf="sent" class="text-success">¡Gracias! Te contactaremos por email.</span>
+                            <span *ngIf="errorMsg" class="text-danger">{{ errorMsg }}</span> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-12 col-lg-5">
+                <div class="card-snow p-4 h-100 base-text" appRevealOnScroll>
+                    <h3 class="h5 fw-bold mb-2">Importante</h3>
+                    <ul class="mb-0">
+                        <li>Todo contacto se gestiona por email (sin WhatsApp).</li>
+                        <li>Podemos compartir fechas disponibles (próximo: embed de calendario).</li>
+                        <li>Factura A / seguros según requisitos del shopping/empresa.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

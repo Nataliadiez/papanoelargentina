@@ -1,0 +1,31 @@
+footer {
+  max-height: 150px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.marca {
+  font-family: 'Dancing Script', cursive;
+}
+
+.email-link {
+  color: var(--snow, #fff);
+  text-decoration: underline;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.email-link:hover {
+  color: var(--gold, #caa753);
+  text-shadow: 0 0 6px rgba(255, 200, 120, 0.6);
+}
+
+@media (max-width: 768px) {
+  footer {
+    max-height: 180px;
+  }
+}
