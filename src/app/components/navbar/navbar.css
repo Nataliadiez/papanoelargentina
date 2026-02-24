@@ -2,7 +2,7 @@
    1. NAVBAR BASE (Estructura y Fondo)
    ========================================= */
 
-/* ESTADO INICIAL (Transparente) */
+/* ESTADO INICIAL (Transparente/Blanco) */
 .navbar {
   min-height: var(--nav-height);
   display: flex;
@@ -52,18 +52,16 @@
   padding: 5px 0;
 
   /* PREPARACIÓN DE LA LÍNEA DE NIEVE (Haz de luz) */
-  /* Usamos un degradado que es transparente en las puntas y blanco en el centro */
   background-image: linear-gradient(
     90deg,
     transparent 0%,
     rgba(255, 255, 255, 1) 50%,
     transparent 100%
   );
-  background-size: 0% 2px; /* Empieza invisible (ancho 0) */
+  background-size: 0% 2px;
   background-repeat: no-repeat;
-  background-position: bottom center; /* Ubicada abajo al medio */
+  background-position: bottom center;
 
-  /* Sin bordes ni fondos de caja */
   background-color: transparent;
   box-shadow: none;
   border-radius: 0;
@@ -71,7 +69,7 @@
 
 /* --- HOVER: EL EFECTO LUZ --- */
 .nav-link:hover {
-  color: #ffffff !important; /* Blanco puro */
+  color: #ffffff !important;
 
   /* 1. La línea crece suavemente */
   background-size: 100% 2px;
@@ -80,17 +78,14 @@
   text-shadow:
     0 0 5px rgba(255, 255, 255, 0.8),
     0 0 15px rgba(255, 255, 255, 0.4);
-
-  /* NO HAY TRANSFORM (No se mueve) */
 }
 
 /* ACTIVE (Página Actual): ROJO FRUTILLA */
 .nav-link.active {
   color: #ff4d4d !important;
   font-weight: 600;
-  /* Mantenemos la línea de luz fija para saber dónde estamos */
   background-size: 100% 2px;
-  text-shadow: 0 0 10px rgba(255, 77, 77, 0.4); /* Glow rojizo suave */
+  text-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
 }
 
 /* =========================================
@@ -98,7 +93,6 @@
    ========================================= */
 
 .nav-link {
-  /* Variable: Estrella BLANCA codificada */
   --star-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 784.11 815.53'%3E%3Cpath fill='%23ffffff' d='M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z'/%3E%3C/svg%3E");
 }
 
@@ -245,7 +239,15 @@
 .navbar-toggler:focus {
   box-shadow: none;
 }
-.navbar {
+
+/* ICONO HAMBURGUESA DINÁMICO */
+/* Estado Hero (Fondo Blanco) -> Hamburger Rojo */
+.navbar:not(.solid) {
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(240,0,0)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Estado Scrolleado (Fondo Rojo) -> Hamburger Blanco */
+.navbar.solid {
   --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
@@ -253,23 +255,35 @@
 @media (max-width: 1080px) {
   .navbar {
     height: auto !important;
-    min-height: var(--nav-height);
-    align-items: flex-start;
-    padding-top: 10px;
+    min-height: 60px; /* Redujimos la altura para que no tape el hero */
+    align-items: center; /* Centrado vertical impecable */
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   .container {
     background-color: transparent !important;
   }
   .navbar-collapse {
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     padding-top: 1rem;
     text-align: center;
   }
   .navbar-nav {
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
-  .nav-link {
+
+  /* COLOR LINKS DINÁMICO EN MOBILE */
+  /* Hero (Fondo Blanco) */
+  .navbar:not(.solid) .nav-link {
+    color: rgb(240, 0, 0) !important;
+  }
+
+  /* Scrolleado (Fondo Rojo) */
+  .navbar.solid .nav-link {
     color: white !important;
+  }
+
+  .nav-link {
     font-size: 1.3rem;
   }
 
@@ -277,7 +291,7 @@
     font-size: 2.2rem;
   }
   .logo {
-    height: 36px;
+    height: 32px; /* Logo apenas más chico para liberar aire */
   }
 }
 
