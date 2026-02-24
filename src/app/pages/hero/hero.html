@@ -1,9 +1,45 @@
-<section class="hero-wrap">
-    <div id="snowParticles" class="snow-canvas"></div>
-    <img class="hero-img" src="/images/pnoel-hero.png" alt="Papá Noel Argentina" />
-    <div class="snow-bottom" aria-hidden="true">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-            <path d="M0,60 C240,20 480,100 720,40 C960,-20 1200,80 1440,20 L1440,140 L0,140 Z" fill="#fff" />
+<section class="hero-wrap" #heroSection>
+    <div id="snowParticles" class="snow-canvas" aria-hidden="true"></div>
+
+    <div class="top-hero-layer" [style.transform]="getParallax(-0.6)" aria-hidden="true">
+        <img id="img-top-hero" src="/images/nav4.png" alt="">
+    </div>
+
+    <div class="hero-content-container container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 col-md-12 text-content">
+                <div class="hero-content">
+                    <h1 class="main-title">
+                        <span class="magic-text">La magia de la</span>
+                        <br>
+                        <span class="magic-text christmas">Navidad</span>
+                        <br>
+                        <span class="magic-text"> en tu evento</span>
+                    </h1>
+                    <a class="cta-btn mt-4" [routerLink]="['/']" fragment="contacto">¡Contactanos!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="trineo-wrapper" [style.transform]="getTrineoParallax()" aria-hidden="true">
+        <img class="trineo-img" src="/images/trineo.png" alt="Trineo" />
+    </div>
+
+    <img class="hero-img" [style.transform]="getSantaParallax()" src="/images/pnoel-hero.png"
+        alt="Papá Noel Argentina" />
+
+    <div class="layer snow-hills hills-front" aria-hidden="true">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="snowFront" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f6f7f9" />
+                    <stop offset="70%" stop-color="#ffffff" />
+                    <stop offset="100%" stop-color="#ffffff" />
+                </linearGradient>
+            </defs>
+            <path d="M0,270 C220,230 420,320 720,280 C1040,235 1210,310 1440,255 L1440,320 L0,320 Z"
+                fill="url(#snowFront)" />
         </svg>
     </div>
 </section>

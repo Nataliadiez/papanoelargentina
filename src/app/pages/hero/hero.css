@@ -1,41 +1,43 @@
+/* hero.css */
+
 :host {
   display: block;
 }
 
-/* ÚNICO bloque .hero-wrap */
 .hero-wrap {
   position: relative;
-  min-height: calc(100vh - var(--nav-height, 80px));
-  padding-top: 4rem;
+  padding-top: var(--nav-height, 80px);
+  min-height: 100vh;
+  z-index: 1;
   overflow: hidden;
   isolation: isolate;
-  --scroll: 0; /* 0..1 para parallax si lo usás */
-  background: linear-gradient(
-    rgb(65, 0, 16),
-    rgb(136, 0, 25),
-    rgb(197, 0, 49)
-  ); /* fondo rojo del hero */
+  background: linear-gradient(rgb(105, 0, 0), rgb(181, 0, 0), rgb(255, 108, 108));
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  display: flex;
 }
 
-/* Glow cálido detrás */
+/* Glow cálido detrás (Desktop default) */
 .hero-wrap::before {
   content: '';
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 60vw;
+  width: 100%;
   height: 100%;
   transform: translateX(10%);
   background: radial-gradient(
-    circle at 70% 60%,
+    circle at 85% 60%,
     rgba(255, 215, 180, 0.4) 0%,
-    rgba(255, 180, 120, 0.15) 30%,
-    rgba(0, 0, 0, 0) 70%
+    rgba(255, 180, 120, 0.15) 20%,
+    rgba(0, 0, 0, 0) 50%
   );
   z-index: 0;
   opacity: 0;
   animation: glowFadeIn 1.6s ease-out forwards;
 }
+
 @keyframes glowFadeIn {
   from {
     opacity: 0;
@@ -47,19 +49,162 @@
   }
 }
 
-/* Santa */
+/* Partículas */
+.snow-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* Capas */
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* =========================
+   CONTENIDO: TEXTO Y BOTÓN
+   ========================= */
+.hero-content-container {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.text-content {
+  pointer-events: auto;
+}
+
+.hero-content {
+  padding: 2rem 0;
+  opacity: 0;
+  animation: fadeUpText 1.5s ease-out 0.8s forwards;
+}
+
+@keyframes fadeUpText {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2rem;
+}
+
+.magic-text {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  display: inline-block;
+}
+
+.magic-text.christmas {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 500;
+  font-size: clamp(4rem, 7vw, 6rem);
+  animation: christmasGlow 3s ease-in-out infinite alternate;
+  margin: 0 10px;
+}
+
+@keyframes christmasGlow {
+  0% {
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.5),
+      0 0 20px rgba(255, 255, 255, 0.3);
+    transform: scale(1);
+  }
+  100% {
+    text-shadow:
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 35px rgba(255, 223, 100, 0.6);
+    transform: scale(1.02);
+  }
+}
+
+.cta-btn {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #4a0010;
+  background-color: #ffffff;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn:hover {
+  background-color: #ffcc00;
+  color: #4a0010;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 204, 0, 0.4);
+}
+
+/* =========================
+   TRINEO (PARALLAX + ENTRADA)
+   ========================= */
+.trineo-wrapper {
+  position: absolute;
+  bottom: 40%;
+  left: 0;
+  width: 100%;
+  z-index: 8;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.trineo-img {
+  position: absolute;
+  left: 5%;
+  height: clamp(120px, 25vh, 250px);
+  width: auto;
+  opacity: 0;
+  animation: flyInTrineo 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes flyInTrineo {
+  0% {
+    opacity: 0;
+    transform: translateX(-150vw) translateY(50px) rotate(-15deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+}
+
+/* =========================
+   SANTA Y RESTO DE CAPAS
+   ========================= */
 .hero-img {
   position: absolute;
   right: 0;
-  bottom: 0;
-  height: clamp(420px, 90vh, 900px);
-  width: auto;
+  bottom: -15px;
+  height: 85vh;
+  max-height: 950px;
+  max-width: 45vw;
   object-fit: contain;
-  z-index: 1;
-  transform: translateX(2%) scale(0.96);
+  object-position: bottom right;
+  z-index: 10;
   opacity: 0;
   animation: fadeUp 1.8s ease-out 0.2s forwards;
 }
+
 @keyframes fadeUp {
   0% {
     opacity: 0;
@@ -76,55 +221,138 @@
   }
 }
 
-/* Ola inferior (pegada a la sección blanca) */
-.snow-bottom {
-  position: absolute;
-  left: 50%;
-  bottom: -2px;
-  width: 115%;
-  height: 150px;
-  transform: translateX(-50%);
-  z-index: 3;
-  pointer-events: none;
-  filter: drop-shadow(0 -4px 12px rgba(255, 255, 255, 0.4));
-}
-.snow-bottom svg {
-  display: block;
-  width: 100%;
-  height: 100%;
+/* =========================
+   NIEVE SVG (OLA FRONTAL)
+   ========================= */
+.snow-hills {
+  display: flex;
+  align-items: flex-end;
 }
 
-/*MEDIA QUERIES*/
-/* Mobile */
+.snow-wave-wrapper {
+  width: 115%;
+  margin-left: -6%;
+  display: flex;
+  flex-direction: column;
+}
+
+.snow-hills svg {
+  width: 115%;
+  height: auto;
+  max-height: 42vh;
+  display: block;
+  margin-left: -6%;
+  margin-bottom: -3px;
+}
+
+.hills-front {
+  z-index: 20;
+  filter: drop-shadow(0 -4px 14px rgba(255, 255, 255, 0.28));
+}
+
+.top-hero-layer {
+  position: absolute;
+  top: var(--nav-height, 80px);
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+  will-change: transform;
+}
+
+#img-top-hero {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* TABLETS Y NETBOOKS */
+@media (max-width: 1700px) {
+  .trineo-wrapper {
+    bottom: 30%;
+  }
+  .trineo-img {
+    height: 200px;
+    left: 2%;
+  }
+}
+
+/* =========================
+   🔥 MOBILE FIXES TOTALES 🔥
+   ========================= */
 @media (max-width: 768px) {
   .hero-wrap {
-    min-height: 85vh;
-    padding-top: calc(1rem + env(safe-area-inset-top, 0));
+    min-height: 100vh;
   }
+
   .hero-wrap::before {
     width: 100%;
-    height: 72vh;
-    left: 0;
-    right: 0;
-    transform: none;
+    height: 100%;
     background: radial-gradient(
-      circle at 70% 65%,
+      ellipse 150% 100% at 85% 75%,
       rgba(255, 215, 180, 0.35) 0%,
-      rgba(255, 180, 120, 0.15) 40%,
-      rgba(0, 0, 0, 0) 80%
+      rgba(255, 180, 120, 0.15) 35%,
+      rgba(0, 0, 0, 0) 100%
     );
-  }
-  .hero-img {
-    position: static;
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    height: 85vh;
-    object-fit: cover;
-    object-position: 80% 40%;
     transform: none;
+    animation: none;
+    opacity: 1;
+  }
+
+  /* CAMBIO CLAVE: Subimos el texto con más fuerza negativa */
+  .hero-content {
+    margin-top: -36vh; /* Antes -10vh, ahora vuela mucho más alto */
+    padding-bottom: 2rem; /* Aire extra por si acaso */
+  }
+  .cta-btn {
+    margin-top: 0px !important;
+  }
+
+  .main-title {
+    line-height: 1.4;
+  }
+
+  .magic-text {
+    font-size: 1.8rem;
+  }
+  .magic-text.christmas {
+    font-size: 3.2rem;
+    margin: 0 5px;
+  }
+
+  .hero-img {
+    position: absolute;
+    right: -2%;
+    bottom: 60px;
+    width: 85%;
+    max-width: 400px;
+    height: auto;
+    max-height: 55vh;
+    object-fit: contain;
+    object-position: bottom right;
+    transform: none;
+    z-index: 10;
     animation: fadeUpMobile 1.2s ease-out forwards;
   }
+
+  .trineo-wrapper {
+    bottom: 30%;
+  }
+  .trineo-img {
+    height: 100px;
+    left: 2%;
+  }
+
+  .snow-wave-wrapper {
+    margin-left: -15%;
+  }
+
+  .snow-hills svg {
+    min-height: 500px;
+    max-height: none;
+    height: auto;
+  }
+
   @keyframes fadeUpMobile {
     from {
       opacity: 0;
@@ -135,11 +363,4 @@
       transform: translateY(0);
     }
   }
-}
-
-.snow-canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
 }

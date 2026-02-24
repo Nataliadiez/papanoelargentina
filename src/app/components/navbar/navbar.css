@@ -1,6 +1,10 @@
-/* NAVBAR BASE */
+/* =========================================
+   1. NAVBAR BASE (Estructura y Fondo)
+   ========================================= */
+
+/* ESTADO INICIAL (Transparente) */
 .navbar {
-  height: var(--nav-height);
+  min-height: var(--nav-height);
   display: flex;
   align-items: center;
   position: fixed;
@@ -8,70 +12,267 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: #410010;
-  transition: background-color 0.25s ease, backdrop-filter 0.25s ease, border-color 0.25s ease,
-    box-shadow 0.25s ease;
+  background-color: rgb(255, 255, 255) !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  padding: 0;
+  transition:
+    background-color 0.4s ease,
+    padding 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
-/* Modo sólido cuando se hace scroll (clase agregada desde TS) */
+/* ESTADO SCROLLEADO (Royal Velvet) */
 .navbar.solid {
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: saturate(160%) blur(6px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to right, #4a0010, #750019) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Colores de links */
-.navbar a {
-  color: white;
+.navbar.solid a {
+  color: rgba(255, 255, 255, 0.9) !important;
 }
+
+/* =========================================
+   2. LINKS: ESTILO "LUZ DE NIEVE" ❄️💡
+   ========================================= */
+.navbar a {
+  text-decoration: none;
+}
+
+/* --- CONFIGURACIÓN BASE --- */
 .nav-link {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  font-size: 1.2rem;
-}
-.nav-link:hover {
-  color: var(--snow);
-  opacity: 0.9;
-}
-.nav-link.active {
-  color: var(--gold);
-  font-weight: 600;
+  font-size: 1.15rem;
+  color: rgb(240, 0, 0);
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  padding: 5px 0;
+
+  /* PREPARACIÓN DE LA LÍNEA DE NIEVE (Haz de luz) */
+  /* Usamos un degradado que es transparente en las puntas y blanco en el centro */
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 1) 50%,
+    transparent 100%
+  );
+  background-size: 0% 2px; /* Empieza invisible (ancho 0) */
+  background-repeat: no-repeat;
+  background-position: bottom center; /* Ubicada abajo al medio */
+
+  /* Sin bordes ni fondos de caja */
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
 }
 
-/* Marca */
+/* --- HOVER: EL EFECTO LUZ --- */
+.nav-link:hover {
+  color: #ffffff !important; /* Blanco puro */
+
+  /* 1. La línea crece suavemente */
+  background-size: 100% 2px;
+
+  /* 2. El texto brilla (Glow de nieve) */
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 15px rgba(255, 255, 255, 0.4);
+
+  /* NO HAY TRANSFORM (No se mueve) */
+}
+
+/* ACTIVE (Página Actual): ROJO FRUTILLA */
+.nav-link.active {
+  color: #ff4d4d !important;
+  font-weight: 600;
+  /* Mantenemos la línea de luz fija para saber dónde estamos */
+  background-size: 100% 2px;
+  text-shadow: 0 0 10px rgba(255, 77, 77, 0.4); /* Glow rojizo suave */
+}
+
+/* =========================================
+   3. CLICK: ESTRELLAS MICRO BLANCAS ✨
+   ========================================= */
+
+.nav-link {
+  /* Variable: Estrella BLANCA codificada */
+  --star-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 784.11 815.53'%3E%3Cpath fill='%23ffffff' d='M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z'/%3E%3C/svg%3E");
+}
+
+/* Contenedores de las estrellas */
+.nav-link:before,
+.nav-link:after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 140%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background-repeat: no-repeat;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Activación al Click (:active y :focus) */
+.nav-link:active:before,
+.nav-link:focus:before {
+  animation: starExplosionTop 1s ease-out forwards;
+  background-image: var(--star-url), var(--star-url), var(--star-url);
+}
+
+.nav-link:active:after,
+.nav-link:focus:after {
+  animation: starExplosionBottom 1.2s ease-out forwards;
+  background-image: var(--star-url), var(--star-url), var(--star-url);
+}
+
+/* KEYFRAMES: ESTRELLAS MICRO */
+@keyframes starExplosionTop {
+  0% {
+    opacity: 1;
+    background-size:
+      0 0,
+      0 0,
+      0 0;
+    background-position:
+      50% 50%,
+      50% 50%,
+      50% 50%;
+  }
+  20% {
+    background-size:
+      8px 8px,
+      10px 10px,
+      6px 6px;
+  }
+  60% {
+    opacity: 1;
+    background-size:
+      8px 8px,
+      10px 10px,
+      6px 6px;
+    background-position:
+      10% -20%,
+      50% -50%,
+      90% -10%;
+  }
+  100% {
+    opacity: 0;
+    background-size:
+      4px 4px,
+      5px 5px,
+      3px 3px;
+    background-position:
+      5% -30%,
+      50% -70%,
+      95% -20%;
+  }
+}
+
+@keyframes starExplosionBottom {
+  0% {
+    opacity: 1;
+    background-size:
+      0 0,
+      0 0,
+      0 0;
+    background-position:
+      50% 50%,
+      50% 50%,
+      50% 50%;
+  }
+  20% {
+    background-size:
+      6px 6px,
+      9px 9px,
+      5px 5px;
+  }
+  60% {
+    opacity: 1;
+    background-size:
+      6px 6px,
+      9px 9px,
+      5px 5px;
+    background-position:
+      15% 120%,
+      60% 150%,
+      85% 110%;
+  }
+  100% {
+    opacity: 0;
+    background-size:
+      3px 3px,
+      4px 4px,
+      2px 2px;
+    background-position:
+      10% 140%,
+      60% 170%,
+      90% 130%;
+  }
+}
+
+/* =========================================
+   4. OTROS ELEMENTOS Y MOBILE
+   ========================================= */
+
 .navbar-brand {
   font-family: 'Dancing Script', cursive;
   font-weight: 500;
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   white-space: nowrap;
-  color: white;
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Logo (solo acá para no duplicar) */
+.navbar:not(.solid) .navbar-brand {
+  color: rgb(240, 0, 0) !important;
+}
 .logo {
   height: 48px;
   width: auto;
   display: block;
 }
 
-/* Toggler visible sobre oscuro */
 .navbar-toggler {
   border: none;
 }
 .navbar-toggler:focus {
   box-shadow: none;
 }
-/* Ícono hamburguesa en blanco/gris claro */
 .navbar {
-  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+/* MOBILE FIX */
+@media (max-width: 1080px) {
   .navbar {
-    height: var(--nav-height);
-  } /* ya toma 100px por :root mobile */
+    height: auto !important;
+    min-height: var(--nav-height);
+    align-items: flex-start;
+    padding-top: 10px;
+  }
+  .container {
+    background-color: transparent !important;
+  }
+  .navbar-collapse {
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+    text-align: center;
+  }
+  .navbar-nav {
+    gap: 1.5rem;
+  }
+  .nav-link {
+    color: white !important;
+    font-size: 1.3rem;
+  }
+
   .navbar-brand {
     font-size: 2.2rem;
   }

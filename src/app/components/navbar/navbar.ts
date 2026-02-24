@@ -1,5 +1,6 @@
 import { Component, OnDestroy, AfterViewInit, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import gsap from 'gsap';
 
 type SectionId = 'hero' | 'nosotros' | 'shoppings' | 'empresas' | 'contacto';
 
@@ -30,7 +31,7 @@ export class Navbar implements AfterViewInit, OnDestroy {
       Number(
         getComputedStyle(document.documentElement)
           .getPropertyValue('--nav-height')
-          .replace('px', '')
+          .replace('px', ''),
       ) || 80;
 
     this.observer = new IntersectionObserver(
@@ -40,7 +41,7 @@ export class Navbar implements AfterViewInit, OnDestroy {
         });
       },
       // rootMargin negativo arriba = “activar” apenas asoma bajo el navbar
-      { rootMargin: `-${navHeight}px 0px -60% 0px`, threshold: 0.1 }
+      { rootMargin: `-${navHeight}px 0px -60% 0px`, threshold: 0.1 },
     );
 
     // Observamos TODAS, incluido hero
