@@ -10,7 +10,11 @@ El objetivo es presentar los servicios, mostrar la trayectoria y facilitar el co
 
 Actualmente el sitio está en desarrollo y cuenta con una vista principal:
 
-<img width="1246" height="916" alt="Home" src="https://github.com/user-attachments/assets/9bf28852-b027-4030-8d8a-8eb515ca72d5" />
+### 📱 Mobile
+<img width="409" height="913" alt="mobile" src="https://github.com/user-attachments/assets/2aa7e35d-e527-4d6c-bdd1-0ced572bb665" />
+
+### 💻 Desktop
+<img width="1246" height="916" alt="desktop" src="https://github.com/user-attachments/assets/6656b577-c4b9-402d-88a6-05d0c742b482" />
 
 ---
 
@@ -39,4 +43,3 @@ git clone https://github.com/Nataliadiez/papanoelargentina.git
 cd papanoelargentina
 npm install
 ng serve
-```
