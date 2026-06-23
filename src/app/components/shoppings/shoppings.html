@@ -1,0 +1,59 @@
+<section id="shoppings" class="shoppings red-surface">
+
+  <div class="shoppings__inner container-x">
+    <header class="shoppings__header js-reveal">
+      <span class="section-eyebrow">Sacate la foto con Papá Noel</span>
+      <p>Conocé los centros comerciales donde podés encontrar a Papá Noel para sacarte la foto.</p>
+    </header>
+
+    <div class="shoppings__layout">
+      <div class="shoppings__cards" data-gsap-stagger>
+        @for (shopping of shoppings; track shopping.name) {
+        <article class="shopping-card">
+          <div class="shopping-card__image">
+            @if (shopping.image) {
+            <img [src]="shopping.image" [alt]="shopping.name" loading="lazy" />
+            } @else {
+            <div class="photo-fallback"><span>{{ shopping.name }}</span></div>
+            }
+          </div>
+
+          <div class="shopping-card__body">
+            <h3>{{ shopping.name }}</h3>
+            <p class="shopping-card__province">⌖ {{ shopping.province }}</p>
+
+            <ul>
+              <li><span aria-hidden="true">▣</span>{{ shopping.date }}</li>
+              <li><span aria-hidden="true">◷</span>{{ shopping.schedule }}</li>
+              <li><span aria-hidden="true">▧</span>Foto impresa {{ shopping.price }}</li>
+            </ul>
+
+            <a class="btn-gold shopping-card__button" href="#contacto">
+              Ver más <span aria-hidden="true">›</span>
+            </a>
+          </div>
+        </article>
+        }
+      </div>
+
+      <aside class="shoppings-info js-reveal">
+        <span class="shoppings-info__icon" aria-hidden="true">🎁</span>
+        <h3>Información importante</h3>
+        <p>Los horarios pueden variar. Recomendamos consultar antes de tu visita.</p>
+
+        <hr />
+
+        <h4>Pagos aceptados</h4>
+        <div class="shoppings-info__payments">
+          @for (payment of payments; track payment) {
+          <span>{{ payment }}</span>
+          }
+        </div>
+
+        <hr />
+
+        <p>Los precios pueden cambiar sin previo aviso.</p>
+      </aside>
+    </div>
+  </div>
+</section>

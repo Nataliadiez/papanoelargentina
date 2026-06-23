@@ -1,0 +1,125 @@
+:host {
+  display: block;
+}
+
+.about {
+  position: relative;
+  min-height: 620px;
+  margin-top: -1px;
+  padding: clamp(6.5rem, 10vw, 9rem) 0 clamp(8rem, 12vw, 12rem);
+  text-align: center;
+}
+
+.about__inner {
+  position: relative;
+  z-index: 4;
+}
+
+.about__star {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 0.8rem;
+  color: var(--gold-dark);
+  font-size: 2.2rem;
+}
+
+.about__eyebrow {
+  color: var(--red-700);
+}
+
+.about__title {
+  max-width: 880px;
+  margin: 1.3rem auto 0;
+  color: #2a100f;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3rem, 6.1vw, 6.35rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.about__title span {
+  color: var(--gold-dark);
+}
+
+.about__text {
+  max-width: 730px;
+  margin: 2.1rem auto 0;
+  color: #34201d;
+  font-size: clamp(1rem, 1.55vw, 1.32rem);
+  line-height: 1.55;
+}
+
+.about__text strong {
+  color: var(--red-700);
+}
+
+.about__values {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: clamp(3.5rem, 6vw, 6rem);
+}
+
+.about__value {
+  position: relative;
+  min-height: 190px;
+  padding: 0 1.4rem;
+}
+
+.about__value + .about__value {
+  border-left: 1px solid rgba(155, 103, 27, 0.26);
+}
+
+.about__icon {
+  display: inline-grid;
+  place-items: center;
+  min-height: 70px;
+  color: var(--gold-dark);
+  font-family: 'Cinzel', serif;
+  font-size: clamp(3rem, 4.4vw, 4.3rem);
+  line-height: 1;
+}
+
+.about__value h3 {
+  margin: 0.9rem 0 0;
+  color: var(--red-700);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  line-height: 1;
+}
+
+.about__value p {
+  max-width: 210px;
+  margin: 1rem auto 0;
+  color: #4f3a36;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .about__values {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 0;
+  }
+
+  .about__value:nth-child(3) {
+    border-left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .about {
+    padding-top: 5.2rem;
+  }
+
+  .about__values {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+  }
+
+  .about__value,
+  .about__value + .about__value {
+    border-left: 0;
+  }
+}

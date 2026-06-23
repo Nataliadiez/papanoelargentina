@@ -1,0 +1,27 @@
+<section id="nosotros" class="about cream-surface">
+  <div class="about__inner container-x js-reveal">
+    <span class="about__star" aria-hidden="true">☆</span>
+    <span class="section-eyebrow about__eyebrow">Nosotros</span>
+
+    <h2 class="about__title">
+      Más de <span>20 años</span> creando<br /> momentos mágicos
+    </h2>
+
+    <p class="about__text">
+      En <strong>Papá Noel Argentina</strong>, transformamos cada encuentro en una experiencia inolvidable.
+      Llevamos la magia de la Navidad a shoppings, empresas y tiendas de todo el país, con profesionalismo,
+      calidez y dedicación en cada detalle.
+    </p>
+
+    <div class="about__values" data-gsap-stagger>
+      @for (value of values; track value.title) {
+      <article class="about__value">
+        <span class="about__icon" aria-hidden="true">{{ value.icon }}</span>
+        <h3>{{ value.title }}</h3>
+        <p>{{ value.text }}</p>
+      </article>
+      }
+    </div>
+  </div>
+
+</section>

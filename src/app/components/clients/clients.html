@@ -1,0 +1,13 @@
+<section id="clientes" class="clients red-surface">
+  <div class="clients__inner container-x js-reveal">
+    <span class="section-eyebrow">Nuestros clientes</span>
+
+    <div class="clients__logos" data-gsap-stagger>
+      @for (client of clients; track client) {
+        <span>{{ client }}</span>
+      }
+    </div>
+
+    <p>Y muchas marcas que ya confían en nuestra magia.</p>
+  </div>
+</section>

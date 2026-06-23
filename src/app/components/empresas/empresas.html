@@ -1,0 +1,24 @@
+<section id="empresas" class="business cream-surface">
+  <div class="business__inner container-x">
+    <div class="business__content js-reveal">
+      <span class="section-eyebrow">Empresas</span>
+      <h2>Soluciones navideñas <span>para tu marca</span></h2>
+      <p>Convertimos tu espacio en un lugar mágico.</p>
+
+      <div class="business__services" data-gsap-stagger>
+        @for (service of services; track service.label) {
+          <article>
+            <span aria-hidden="true">{{ service.icon }}</span>
+            <h3>{{ service.label }}</h3>
+          </article>
+        }
+      </div>
+
+      <a class="btn-gold business__button" href="#contacto">Más información <span aria-hidden="true">›</span></a>
+    </div>
+
+    <figure class="business__photo js-reveal">
+      <img src="/images/empresas/experiencia-navidad.webp" alt="Papá Noel compartiendo una experiencia navideña" loading="lazy" />
+    </figure>
+  </div>
+</section>

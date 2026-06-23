@@ -1,0 +1,193 @@
+:host {
+  display: block;
+}
+
+.shoppings {
+  padding: clamp(5.5rem, 8vw, 8.5rem) 0 clamp(5rem, 8vw, 7.5rem);
+}
+
+.shoppings__inner {
+  position: relative;
+  z-index: 4;
+}
+
+.shoppings__header {
+  max-width: 830px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.shoppings__header .section-eyebrow {
+  font-size: clamp(1.05rem, 2vw, 2rem);
+  letter-spacing: 0.12em;
+}
+
+.shoppings__header p {
+  max-width: 620px;
+  margin: 1rem auto 0;
+  color: rgba(255, 250, 241, 0.9);
+  font-size: clamp(1rem, 1.4vw, 1.24rem);
+  line-height: 1.45;
+}
+
+.shoppings__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 2rem;
+  align-items: stretch;
+  margin-top: clamp(2.4rem, 4vw, 4rem);
+}
+
+.shoppings__cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.35rem;
+}
+
+.shopping-card {
+  overflow: hidden;
+  border: 1px solid rgba(243, 216, 137, 0.62);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(118, 0, 15, 0.76), rgba(55, 0, 6, 0.92));
+  box-shadow: var(--shadow-gold);
+}
+
+.shopping-card__image {
+  height: 188px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(216, 170, 74, 0.42);
+}
+
+.shopping-card__image img,
+.shopping-card__image .photo-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.shopping-card:hover .shopping-card__image img,
+.shopping-card:hover .shopping-card__image .photo-fallback {
+  transform: scale(1.045);
+}
+
+.shopping-card__body {
+  padding: 1.15rem 1.15rem 1.25rem;
+}
+
+.shopping-card h3 {
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.65rem, 2vw, 2.1rem);
+  line-height: 0.95;
+}
+
+.shopping-card__province {
+  margin: 0.55rem 0 1.15rem;
+  color: rgba(255, 250, 241, 0.82);
+}
+
+.shopping-card ul {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.shopping-card li {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 0.6rem;
+  color: rgba(255, 250, 241, 0.92);
+  font-size: 0.93rem;
+  line-height: 1.4;
+}
+
+.shopping-card li span {
+  color: var(--gold-2);
+}
+
+.shopping-card__button {
+  width: 100%;
+  min-height: 44px;
+  padding-block: 0.6rem;
+}
+
+.shoppings-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 1.4rem;
+  text-align: center;
+  border: 1px solid rgba(243, 216, 137, 0.62);
+  border-radius: 20px;
+  background: rgba(76, 0, 8, 0.56);
+  box-shadow: var(--shadow-gold);
+}
+
+.shoppings-info__icon {
+  color: var(--gold-2);
+  font-size: 2.6rem;
+}
+
+.shoppings-info h3,
+.shoppings-info h4 {
+  margin: 0.9rem 0 0;
+  color: var(--gold-2);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.shoppings-info h4 {
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.shoppings-info p {
+  margin: 1rem 0 0;
+  color: rgba(255, 250, 241, 0.9);
+  line-height: 1.5;
+}
+
+.shoppings-info hr {
+  width: 100%;
+  margin: 1.7rem 0;
+  border: 0;
+  border-top: 1px solid rgba(243, 216, 137, 0.34);
+}
+
+.shoppings-info__payments {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  color: rgba(255, 250, 241, 0.92);
+}
+
+@media (max-width: 1180px) {
+  .shoppings__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .shoppings__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .shoppings-info {
+    max-width: 620px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .shoppings__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .shopping-card__image {
+    height: 210px;
+  }
+}
