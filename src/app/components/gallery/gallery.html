@@ -1,9 +1,4 @@
 <section id="galeria" class="gallery cream-surface">
-  <svg class="gold-line-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-    <path class="wave-fill-cream" d="M0,58 C210,18 380,84 600,46 C805,10 1020,74 1440,24 L1440,0 L0,0 Z" />
-    <path d="M0,62 C210,22 380,88 600,50 C805,14 1020,78 1440,28" fill="none" stroke="rgba(216,170,74,.62)" stroke-width="3" />
-  </svg>
-
   <div class="gallery__inner container-x">
     <header class="gallery__header js-reveal">
       <span class="section-eyebrow">Galería</span>
@@ -11,13 +6,13 @@
 
     <div class="gallery__grid" data-gsap-stagger>
       @for (photo of photos; track photo.title) {
-        <article class="gallery__item" [class.gallery__item--wide]="photo.wide">
-          @if (photo.image) {
-            <img [src]="photo.image" [alt]="photo.title" loading="lazy" />
-          } @else {
-            <div class="photo-fallback"><span>{{ photo.title }}</span></div>
-          }
-        </article>
+      <article class="gallery__item" [class.gallery__item--wide]="photo.wide">
+        @if (photo.image) {
+        <img [src]="photo.image" [alt]="photo.title" loading="lazy" />
+        } @else {
+        <div class="photo-fallback"><span>{{ photo.title }}</span></div>
+        }
+      </article>
       }
     </div>
 

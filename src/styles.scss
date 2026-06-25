@@ -186,9 +186,9 @@ a {
   position: relative;
   color: var(--ink);
   background:
-    radial-gradient(circle at 0 14rem, rgba(255, 211, 117, 0.14), transparent 22rem),
-    radial-gradient(circle at 100% 100%, rgba(255, 211, 117, 0.16), transparent 20rem),
-    linear-gradient(180deg, #fff4df 0%, #fff4df 8%, #fff8ec 34%, var(--cream) 100%);
+    radial-gradient(circle at 0 14rem, rgba(255, 211, 117, 0.12), transparent 22rem),
+    radial-gradient(circle at 100% 100%, rgba(255, 211, 117, 0.14), transparent 20rem),
+    linear-gradient(180deg, #f4dec9 0%, #f6e3cf 10%, #ffeddd 24%, #fff5e8 52%, var(--cream) 100%);
   overflow: hidden;
 }
 
