@@ -1,9 +1,11 @@
 <section id="shoppings" class="shoppings red-surface">
-
   <div class="shoppings__inner container-x">
     <header class="shoppings__header js-reveal">
       <span class="section-eyebrow">Sacate la foto con Papá Noel</span>
-      <p>Conocé los centros comerciales donde podés encontrar a Papá Noel para sacarte la foto.</p>
+      <p>
+        Conocé los centros comerciales donde podés encontrar a Papá Noel para
+        sacarte la foto.
+      </p>
     </header>
 
     <div class="shoppings__layout">
@@ -14,18 +16,44 @@
             @if (shopping.image) {
             <img [src]="shopping.image" [alt]="shopping.name" loading="lazy" />
             } @else {
-            <div class="photo-fallback"><span>{{ shopping.name }}</span></div>
+            <div class="photo-fallback">
+              <span>{{ shopping.name }}</span>
+            </div>
             }
           </div>
 
           <div class="shopping-card__body">
             <h3>{{ shopping.name }}</h3>
-            <p class="shopping-card__province">⌖ {{ shopping.province }}</p>
+
+            <p class="shopping-card__province">
+              <span class="material-symbols-outlined" aria-hidden="true">
+                location_on
+              </span>
+
+              {{ shopping.province }}
+            </p>
 
             <ul>
-              <li><span aria-hidden="true">▣</span>{{ shopping.date }}</li>
-              <li><span aria-hidden="true">◷</span>{{ shopping.schedule }}</li>
-              <li><span aria-hidden="true">▧</span>Foto impresa {{ shopping.price }}</li>
+              <li>
+                <span class="material-symbols-outlined">
+                  calendar_today
+                </span>
+                {{ shopping.date }}
+              </li>
+
+              <li>
+                <span class="material-symbols-outlined">
+                  schedule
+                </span>
+                {{ shopping.schedule }}
+              </li>
+
+              <li>
+                <span class="material-symbols-outlined">
+                  image
+                </span>
+                Foto impresa {{ shopping.price }}
+              </li>
             </ul>
 
             <a class="btn-gold shopping-card__button" href="#contacto">
@@ -35,25 +63,66 @@
         </article>
         }
       </div>
+    </div>
 
-      <aside class="shoppings-info js-reveal">
-        <span class="shoppings-info__icon" aria-hidden="true">🎁</span>
+    <aside class="shoppings-info js-reveal">
+      <div class="shoppings-info__shell">
+        <span class="shoppings-info__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img">
+            <path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8" />
+            <path d="M2 7h20v5H2z" />
+            <path d="M12 22V7" />
+            <path d="M12 7H7.5A2.5 2.5 0 1 1 10 4.5C10 6 12 7 12 7z" />
+            <path d="M12 7h4.5A2.5 2.5 0 1 0 14 4.5C14 6 12 7 12 7z" />
+          </svg>
+        </span>
+
         <h3>Información importante</h3>
-        <p>Los horarios pueden variar. Recomendamos consultar antes de tu visita.</p>
 
-        <hr />
+        <p>
+          Los horarios pueden variar. Recomendamos consultar antes de tu visita.
+        </p>
 
-        <h4>Pagos aceptados</h4>
+        <div class="shoppings-info__divider" aria-hidden="true"></div>
+
+        <p class="shoppings-info__label">Pagos aceptados:</p>
+
         <div class="shoppings-info__payments">
-          @for (payment of payments; track payment) {
-          <span>{{ payment }}</span>
+          @for (payment of payments; track payment.label) {
+          <div class="payment-method">
+            <span class="payment-method__icon" aria-hidden="true">
+              @switch (payment.icon) {
+              @case ('cash') {
+              <span class="material-symbols-outlined">
+                payments
+              </span>
+              }
+
+              @case ('card') {
+              <span class="material-symbols-outlined">
+                credit_card
+              </span>
+              }
+
+              @case ('transfer') {
+              <span class="material-symbols-outlined">
+                qr_code
+              </span>
+              }
+              }
+            </span>
+
+            <span>{{ payment.label }}</span>
+          </div>
           }
         </div>
 
-        <hr />
+        <div class="shoppings-info__divider" aria-hidden="true"></div>
 
-        <p>Los precios pueden cambiar sin previo aviso.</p>
-      </aside>
-    </div>
+        <p>
+          Los medios de pago pueden variar según la disponibilidad de cada centro comercial.
+        </p>
+      </div>
+    </aside>
   </div>
 </section>

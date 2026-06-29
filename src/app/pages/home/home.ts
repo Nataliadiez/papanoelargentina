@@ -67,7 +67,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
           scale: 0.96,
           duration: 1.05,
         },
-        '-=0.72'
+        '-=0.72',
       );
   }
 

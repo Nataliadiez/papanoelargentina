@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
-interface ShoppingCard {
+type PaymentIcon = 'cash' | 'card' | 'transfer';
+
+interface Shopping {
   name: string;
   province: string;
   date: string;
@@ -9,47 +11,66 @@ interface ShoppingCard {
   image: string;
 }
 
+interface PaymentMethod {
+  label: string;
+  icon: PaymentIcon;
+}
+
 @Component({
   selector: 'app-shoppings',
   standalone: true,
+  imports: [],
   templateUrl: './shoppings.html',
   styleUrl: './shoppings.scss',
 })
 export class ShoppingsComponent {
-  protected readonly shoppings: ShoppingCard[] = [
+  readonly shoppings: Shopping[] = [
     {
-      name: 'Córdoba Shopping',
-      province: 'Córdoba',
-      date: 'Del 30/11 al 24/12',
-      schedule: 'Lunes a Domingo · 15:00 a 21:00',
-      price: '$8.000',
-      image: '/images/shoppings/cordoba-shopping.webp',
-    },
-    {
-      name: 'Alto Avellaneda',
-      province: 'Buenos Aires',
-      date: 'Del 30/11 al 24/12',
-      schedule: 'Lunes a Domingo · 15:00 a 21:00',
-      price: '$8.000',
-      image: '/images/shoppings/alto-avellaneda.webp',
+      name: 'Portal Patagonia',
+      province: 'Neuquén',
+      date: 'Del 01/12 al 23/12',
+      schedule: 'Lunes a Lunes · 12:00 a 21:00 hs.',
+      price: '$15.000',
+      image: '/images/shoppings/portal-patagonia.jpg',
     },
     {
       name: 'Portal Rosario',
-      province: 'Santa Fe',
-      date: 'Del 30/11 al 24/12',
-      schedule: 'Lunes a Domingo · 15:00 a 21:00',
-      price: '$8.000',
-      image: '/images/shoppings/portal-rosario.webp',
+      province: 'Santa Fé',
+      date: 'Del 01/12 al 23/12',
+      schedule: 'Lunes a Lunes · 12:00 a 21:00 hs.',
+      price: '$15.000',
+      image: '/images/shoppings/portal-rosario.jpg',
     },
     {
-      name: 'Dot Baires Shopping',
-      province: 'Buenos Aires',
-      date: 'Del 30/11 al 24/12',
-      schedule: 'Lunes a Domingo · 15:00 a 21:00',
-      price: '$8.000',
-      image: '/images/shoppings/dot-baires.webp',
+      name: 'Unicenter',
+      province: 'Buenos Aires - Martinez',
+      date: 'Del 01/12 al 24/12',
+      schedule: 'Lunes a Lunes · 10:00 a 22:00 hs.',
+      price: '$15.000',
+      image: '/images/shoppings/unicenter.jpg',
+    },
+    {
+      name: 'Palmas del Pilar',
+      province: 'Buenos Aires - Pilar',
+      date: 'Del 01/12 al 24/12',
+      schedule: 'Lunes a Lunes · 12:00 a 21:00 hs.',
+      price: '$15.000',
+      image: '/images/shoppings/palmas-del-pilar.jpg',
     },
   ];
 
-  protected readonly payments = ['Efectivo', 'Tarjeta', 'Transferencia'];
+  readonly payments: PaymentMethod[] = [
+    {
+      label: 'Efectivo',
+      icon: 'cash',
+    },
+    {
+      label: 'Tarjeta',
+      icon: 'card',
+    },
+    {
+      label: 'Transferencia',
+      icon: 'transfer',
+    },
+  ];
 }

@@ -1,36 +1,62 @@
-<footer class="footer red-surface">
+<footer class="footer">
   <div class="footer__inner container-x">
-    <div class="footer__brand">
+    <div class="footer__brand" aria-label="Papá Noel Argentina CG Producciones">
       <span class="footer__script">Papá Noel</span>
       <span class="footer__country">Argentina</span>
-      <span class="footer__company">CG Producciones</span>
-      <p>Hacemos de la Navidad una experiencia inolvidable.</p>
     </div>
 
-    <nav class="footer__nav" aria-label="Navegación secundaria">
-      <h2>Navegación</h2>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#shoppings">Centros comerciales</a>
-      <a href="#empresas">Empresas</a>
-      <a href="#galeria">Galería</a>
-      <a href="#clientes">Clientes</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+    <div class="footer__divider" aria-hidden="true"></div>
 
-    <div class="footer__contact">
-      <h2>Contacto</h2>
-      <a href="mailto:giacheproducciones@gmail.com">giacheproducciones@gmail.com</a>
-      <p>Lunes a viernes de 10 a 18 hs.</p>
-      <div class="footer__socials" aria-label="Redes sociales">
-        <a href="https://www.instagram.com/papanoel.argentina" target="_blank" rel="noreferrer">Instagram</a>
-      </div>
+    <a class="footer__item" href="mailto:giacheproducciones@gmail.com" aria-label="Enviar email">
+      <span class="footer__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 6h16v12H4z" />
+          <path d="m4 7 8 6 8-6" />
+        </svg>
+      </span>
+      <span>giacheproducciones@gmail.com</span>
+    </a>
+
+    <div class="footer__divider" aria-hidden="true"></div>
+
+    <div class="footer__item">
+      <span class="footer__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6a2 2 0 0 1 1.7 2Z" />
+        </svg>
+      </span>
+      <span>Lunes a viernes de 10<br />a 18 hs.</span>
     </div>
+
+    <div class="footer__divider" aria-hidden="true"></div>
+
+    <a class="footer__item" href="https://www.instagram.com/papanoel.argentina" target="_blank" rel="noreferrer"
+      aria-label="Instagram Papá Noel Argentina">
+      <span class="footer__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <rect x="4" y="4" width="16" height="16" rx="4" />
+          <circle cx="12" cy="12" r="3.2" />
+          <path d="M17.3 6.8h.01" />
+        </svg>
+      </span>
+      <span>@papanoel.argentina</span>
+    </a>
 
     <div class="footer__magic" aria-hidden="true">
-      <span>🛷</span>
+      <img class="img-renos" src="/images/footer-sleigh.png" alt="" />
       <strong>Viví la magia</strong>
     </div>
   </div>
 
-  <p class="footer__legal">© 2026 Papá Noel Argentina | CG Producciones. Todos los derechos reservados.</p>
+  <div class="footer__signature">
+    <span aria-hidden="true"></span>
+
+    <a href="https://diez-castillos.vercel.app/" target="_blank" rel="noreferrer"
+      aria-label="Diseño y desarrollo por Diez Castillos">
+      Diseño y desarrollo por <strong>@DiezCastillos</strong>
+    </a>
+
+    <span aria-hidden="true"></span>
+  </div>
 </footer>
